@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Modal,
-  Button,
-} from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 function ContentBox({ title, information, icon }) {
   return (

@@ -21,7 +21,6 @@ function Project({
   const [newStatus, setNewStatus] = useState(status);
 
   const requestProject = (method) => {
-    console.log(method);
     if (newStatus !== status || method === "delete") {
       axios({
         method,

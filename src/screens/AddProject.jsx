@@ -166,10 +166,7 @@ function AddProject({ navigation }) {
         </View>
       </View>
 
-      <View
-        onStartShouldSetResponder={() => console.log("View click")}
-        style={styles.needs}
-      >
+      <View style={styles.needs}>
         <Pressable
           onPress={() => {
             setOptions({
