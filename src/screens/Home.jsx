@@ -11,6 +11,7 @@ import Project from "../components/Project";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useIsFocused } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 export default function Home({ navigation }) {
   const [projects, setProjects] = useState([]);
@@ -59,9 +60,14 @@ export default function Home({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SafeAreaView>
+      <SafeAreaView style={styles.search}>
+        <Icon
+          name="search"
+          size={20}
+          color={"#787a79"}
+          style={{ marginRight: 7 }}
+        />
         <TextInput
-          style={styles.search}
           placeholder="Buscar projeto"
           clearButtonMode="always"
           value={searchText}
@@ -92,27 +98,25 @@ export default function Home({ navigation }) {
 
       <View style={styles.review}>
         <Text style={styles.reviewTitle}>Daily Review</Text>
-
-        <View style={styles.reviewList}>
-          <FlatList
-            data={projects}
-            renderItem={({ item }) => (
-              <Project
-                title={item.title}
-                time={item.time}
-                status={item.status}
-                period={item.period}
-                dayOrMonth={item.dayOrMonth}
-                urgency={item.urgency}
-                id={item.id}
-                need={item.need}
-                watchModalStatus={watchModalStatus}
-              />
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
       </View>
+      <FlatList
+        data={projects}
+        style={styles.reviewList}
+        renderItem={({ item }) => (
+          <Project
+            title={item.title}
+            time={item.time}
+            status={item.status}
+            period={item.period}
+            dayOrMonth={item.dayOrMonth}
+            urgency={item.urgency}
+            id={item.id}
+            need={item.need}
+            watchModalStatus={watchModalStatus}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+      />
     </SafeAreaView>
   );
 }
@@ -154,6 +158,7 @@ const styles = StyleSheet.create({
   reviewTitle: {
     marginTop: 20,
     fontSize: 17,
+    marginBottom: 30,
   },
   search: {
     width: 319,
@@ -162,5 +167,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#F8F8F6",
     marginBottom: 49,
     padding: 13,
+    flexDirection: "row",
   },
 });
